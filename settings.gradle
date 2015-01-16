@@ -1,0 +1,12 @@
+rootProject.name = 'ThrowayFinal'
+
+include 'mvc'
+include 'core'
+include 'model'
+include 'common'
+
+project(':mvc').projectDir = "$rootDir/mvc" as File
+project(':model').projectDir = "$rootDir/model" as File
+project(':common').projectDir = "$rootDir/common" as File
+project(':core').projectDir = "$rootDir/core" as File
+

@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: Demo
+  jackson:
+    serialization:
+      INDENT_OUTPUT: false
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        generate_statistics: false
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+        id:
+          new_generator_mappings: true
+          optimizer.pooled.prefer_lo: true
+
+server:
+  tomcat:
+    remote_ip_header: x-forwarded-for
+
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate: ERROR
+
+demo:
+  datasource:
+    maximumPoolSize: 20
+    jdbcUrl: jdbc:postgresql://localhost/postgres?searchpath=godb
+    username: postgres
+    password: postgres
+
+
+
+
+spring.jpa.properties.net.sf.ehcache.configurationResourceName: /ehcache-model.xml

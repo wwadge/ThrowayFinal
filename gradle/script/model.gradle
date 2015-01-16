@@ -1,0 +1,38 @@
+apply from: "$rootProject.projectDir/gradle/script/dependencies.gradle"
+
+configurations {
+    querydsl
+}
+
+
+sourceSets {
+    main { compileClasspath += configurations.provided } // to workaround gradle lacking a "provides" scope
+    generated {
+        java {
+            srcDirs = ['src/main/generated']
+        }
+    }
+}
+sourceSets.generated.java.srcDirs = ['src/main/generated']
+task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
+    source = sourceSets.main.java
+    classpath = configurations.compile + configurations.querydsl
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "com.mysema.query.apt.jpa.JPAAnnotationProcessor"
+    ]
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+    dependencyCacheDir = compileJava.dependencyCacheDir
+}
+
+compileJava {
+    dependsOn generateQueryDSL
+    source generateQueryDSL.destinationDir
+}
+
+compileGeneratedJava {
+    dependsOn generateQueryDSL
+    options.warnings = false
+    classpath += sourceSets.main.runtimeClasspath
+}
+

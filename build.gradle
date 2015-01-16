@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven { url 'http://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        // provides for optional/provided dependency scopes
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+    }
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
+
+apply from: "$rootProject.projectDir/gradle/script/database.gradle"
+
+subprojects{
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-maven'
+    apply plugin: 'propdeps-idea'
+    apply plugin: 'propdeps-eclipse'
+    apply plugin: 'spring-boot'
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+
+    apply from: "$rootProject.projectDir/gradle/script/dependencies.gradle"
+
+    ext {
+        springPlatformVersion = '1.0.3.RELEASE'
+    }
+
+    dependencies{
+        // Spring IO (http://platform.spring.io/platform) gives us curated and harmonised dependencies, whose versions
+        // you can find at http://docs.spring.io/platform/docs/${springPlatformVersion}/reference/htmlsingle/#appendix-dependency-versions
+        versionManagement "io.spring.platform:platform-versions:${springPlatformVersion}@properties"
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+   }
+//
+

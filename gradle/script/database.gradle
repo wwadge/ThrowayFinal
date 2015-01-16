@@ -1,0 +1,41 @@
+
+configurations {
+    generator
+}
+
+dependencies {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    generator   "com.felees:hbnpojogen-maven-plugin:1.4.32"
+}
+
+
+
+task dropDB(type: Exec) {
+    commandLine 'psql', '-h', 'localhost', '-d', 'postgres', '-U', 'postgres', '-w', '-c', 'drop schema if exists godb cascade';
+}
+task sourceScript(type: Exec) {
+    commandLine 'psql', '-h', 'localhost', '-d', 'postgres', '-U', 'postgres', '-w', '-f', 'model/src/main/resources/sql/go-schema.sql';
+}
+
+
+
+task sourceDB(dependsOn: ['dropDB', 'sourceScript']) {
+   // a better way would be to use flyway
+}
+
+
+
+// run the HbnPojogen Generator
+task runGenerator(type: JavaExec) {
+    main = 'com.felees.hbnpojogen.HbnPojoGen'
+    classpath configurations.generator
+    args "$rootDir/hbnpojogen.config.go.xml"
+}
+
+
+task generateModel(dependsOn: ['runGenerator']) {
+//    println "Generating model"
+}

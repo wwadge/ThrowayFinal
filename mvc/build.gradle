@@ -1,0 +1,37 @@
+//apply plugin: 'war'
+jar {
+    baseName = 'mvc'
+}
+
+
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+
+dependencies{
+    compile project(':common')
+
+    compile libs.javax_validation
+    compile libs.servlet_api
+    compile libs.spring_boot_actuator
+    compile libs.spring_boot_amqp
+    compile libs.spring_boot_jetty
+    compile libs.spring_boot_security
+    compile libs.spring_boot_starter_web
+    compile libs.spring_boot_web
+    compile libs.spring_data_commons
+    compile libs.spring_hateoas
+    compile libs.spring_mvc
+    compile libs.spring_rest_exception_handler
+//    compile libs.spring_security_oauth2
+    //    compile libs.servlet_api
+    compile libs.ehcache
+    compile libs.spring_context_support
+    compile libs.http_client
+    testCompile libs.spring_boot_test
+
+}
+
+
+

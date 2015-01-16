@@ -1,0 +1,20 @@
+dependencies{
+    compile libs.commons_lang
+    compile libs.guava
+    compile libs.hibernate_validator
+    compile libs.jackson_core
+    compile libs.jackson_databind
+    compile libs.jackson_jsr310
+    compile libs.jaspyt
+    compile libs.lombok
+//    compile libs.spring_boot_remote_shell
+    compile libs.spring_boot_autoconfigure
+    compile libs.spring_boot_amqp
+    compile libs.spring_boot_integration
+    compile libs.spring_context
+    compile libs.spring_integration_amqp
+    compile libs.spring_integration_dsl
+    provided libs.spring_boot_security
+    testCompile libs.spring_boot_test
+
+}

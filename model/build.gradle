@@ -1,0 +1,20 @@
+apply from: "$rootProject.projectDir/gradle/script/model.gradle"
+
+
+dependencies {
+    compile project(':common')
+
+    compile libs.javax_el
+    compile libs.hibernate
+    compile libs.hibernate_cache
+    compile libs.hibernate_validator
+    compile libs.hikaricp
+    compile libs.jadira
+    compile libs.jaspyt_hibernate
+    compile libs.querydsl
+    compile libs.spring_data_commons
+    compile libs.spring_data_jpa
+    compile libs.spring_orm
+    runtime libs.postgres
+    testCompile libs.spring_boot_test
+}

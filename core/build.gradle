@@ -1,0 +1,13 @@
+apply from: "$rootProject.projectDir/gradle/script/dependencies.gradle"
+
+dependencies{
+    compile project(':common')
+    compile project(':model')
+    compile libs.spring_boot_security
+    compile libs.spring_boot_starter_aop
+    compile libs.spring_data_commons
+//    compile libs.spring_boot_actuator
+
+    testCompile libs.spring_boot_test
+
+}

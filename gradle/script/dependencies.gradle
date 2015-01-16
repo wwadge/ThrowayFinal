@@ -1,0 +1,61 @@
+repositories {
+    mavenCentral()
+}
+
+
+ext {
+
+        jacksonVersion = '2.4.2'
+
+    libs = [
+
+            spring_orm: ["org.springframework:spring-orm"],
+            commons_lang: ["org.apache.commons:commons-lang3"],
+            ehcache: "net.sf.ehcache:ehcache-core",
+            glassfish: "org.glassfish.web:el-impl:2.2",
+            guava: ["com.google.guava:guava"],
+            hibernate: ["org.hibernate:hibernate-entitymanager"],
+            hibernate_cache: "org.hibernate:hibernate-ehcache",
+            hibernate_validator: "org.hibernate:hibernate-validator",
+            hikaricp: ["com.zaxxer:HikariCP:2.2.5"],
+            http_client: ["org.apache.httpcomponents:httpclient:4.3.6"],
+            jackson_core: "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}",
+            jackson_databind: "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}",
+            jackson_jsr310: "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}",
+            jadira: ["org.jadira.usertype:usertype.core:3.2.0.GA", "org.jadira.usertype:usertype.extended:3.2.0.GA"],
+            jaspyt: ['org.jasypt:jasypt:1.9.2'],
+            jaspyt_hibernate: "org.jasypt:jasypt-hibernate4:1.9.2",
+            javax_el: "javax.el:javax.el-api",
+            javax_validation: 'javax.validation:validation-api',
+            lombok: ["org.projectlombok:lombok:1.12.4"],
+            orika: [dependencies.create("ma.glasnost.orika:orika-core:1.4.5"){  exclude(module: "javassist") }],
+            postgres: ["org.postgresql:postgresql:9.3-1100-jdbc41"],
+            querydsl: ["com.mysema.querydsl:querydsl-jpa",  "com.mysema.querydsl:querydsl-apt"],
+            servlet_api: ["javax.servlet:javax.servlet-api:3.1.0"],
+            spring_boot_starter_aop: "org.springframework.boot:spring-boot-starter-aop:$springBootVersion",
+            spring_boot_actuator: "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion",
+            spring_boot_amqp: "org.springframework.boot:spring-boot-starter-amqp:$springBootVersion",
+            spring_boot_autoconfigure: "org.springframework.boot:spring-boot-autoconfigure:$springBootVersion",
+            spring_boot_integration: "org.springframework.boot:spring-boot-starter-integration:$springBootVersion",
+            spring_boot_jetty: "org.springframework.boot:spring-boot-starter-jetty:$springBootVersion",
+            spring_boot_jpa: "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion",
+            spring_boot_remote_shell: "org.springframework.boot:spring-boot-starter-remote-shell:$springBootVersion",
+            spring_boot_security:  "org.springframework.boot:spring-boot-starter-security:$springBootVersion",
+            spring_boot_starter:  "org.springframework.boot:spring-boot-starter:$springBootVersion",
+            spring_boot_starter_web: "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
+            spring_boot_test: "org.springframework.boot:spring-boot-starter-test:$springBootVersion",
+            spring_boot_jetty: "org.springframework.boot:spring-boot-starter-jetty:$springBootVersion",
+            spring_boot_web: "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
+            spring_boot_freemarker: [dependencies.create("org.springframework.boot:spring-boot-starter-freemarker:$springBootVersion"){  exclude(module: "spring-boot-starter-web") }],
+            spring_context: ["org.springframework:spring-context"],
+            spring_data_commons: ["org.springframework.data:spring-data-commons"],
+            spring_data_jpa: ["org.springframework.data:spring-data-jpa"],
+            spring_hateoas: "org.springframework.hateoas:spring-hateoas",
+            spring_integration_amqp: "org.springframework.integration:spring-integration-amqp:4.1.0.RELEASE",
+            spring_integration_dsl: "org.springframework.integration:spring-integration-java-dsl:1.0.0.RELEASE",
+            spring_mvc: 'org.springframework:spring-webmvc',
+            spring_context_support: 'org.springframework:spring-context-support',
+            spring_rest_exception_handler: ["cz.jirutka.spring:spring-rest-exception-handler:1.0.1"],
+    ]
+}
+
